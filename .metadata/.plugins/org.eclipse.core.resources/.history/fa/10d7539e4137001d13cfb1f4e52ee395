@@ -1,0 +1,42 @@
+package com.laksara.gocheeta.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.laksara.gocheeta.model.Vehicle;
+import com.laksara.gocheeta.model.VehicleCategory;
+
+public class VehicleManagerImpl implements VehicleManager{
+
+	@Override
+	public boolean addVehicle(Vehicle vehicle) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Vehicle getVehicle(String numberPlate) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Vehicle> getVehicles() throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean updateVehicle(Vehicle vehicle) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteVehicle(String numberPlate) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+}

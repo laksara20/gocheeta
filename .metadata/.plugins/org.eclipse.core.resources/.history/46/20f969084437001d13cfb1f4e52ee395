@@ -1,0 +1,17 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>VehicleCategoryController</servlet-name>
+  	<display-name>VehicleCategoryController</display-name>
+  	<description>This will handle VehicleCategory requests</description>
+  	<servlet-class>com.laksara.gocheeta.controller.VehicleCategoryController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>VehicleCategoryController</servlet-name>
+  	<url-pattern>/VehicleCategory</url-pattern>
+  </servlet-mapping>
+</web-app>

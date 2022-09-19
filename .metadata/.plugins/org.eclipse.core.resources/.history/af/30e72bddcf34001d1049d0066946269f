@@ -1,0 +1,36 @@
+package com.laksara.gocheeta.dao;
+
+import java.util.List;
+
+import com.laksara.gocheeta.model.VehicleCategory;
+
+public class VehicleCategoryManagerImplementation implements VehicleCategoryManager {
+
+	public boolean addVehicleCategory(VehicleCategory vehicleCategory) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	public VehicleCategory getVehicleCategory(String categoryID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<VehicleCategory> getVehicleCategories() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public boolean updateVehicleCategory(String categoryID) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean deleteVehicleCategory(String categoryID) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

@@ -1,0 +1,21 @@
+package com.laksara.gocheeta.model;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+class BookingTest {
+	
+	@BeforeAll
+	static void setup() {
+	    Booking booking = new Booking();
+	    
+	}
+
+	@Test
+	void testCalculateCost() {
+		fail("Not yet implemented");
+	}
+
+}

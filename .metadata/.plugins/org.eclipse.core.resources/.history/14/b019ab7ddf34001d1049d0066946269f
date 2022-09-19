@@ -1,0 +1,15 @@
+package com.laksara.gocheeta.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.laksara.gocheeta.model.VehicleCategory;
+
+public interface VehicleCategoryManager {
+	public boolean addVehicleCategory(VehicleCategory vehicleCategory) throws ClassNotFoundException, SQLException;
+	public VehicleCategory getVehicleCategory(String categoryID) throws ClassNotFoundException, SQLException;
+	public List<VehicleCategory> getVehicleCategories() throws ClassNotFoundException, SQLException;
+	public boolean updateVehicleCategory(VehicleCategory vehicleCategory) throws ClassNotFoundException, SQLException;
+	public boolean deleteVehicleCategory(String categoryID);
+	
+}

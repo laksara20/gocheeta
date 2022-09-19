@@ -1,0 +1,141 @@
+package com.laksara.gocheeta.controller;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.laksara.gocheeta.model.Vehicle;
+import com.laksara.gocheeta.service.VehicleService;
+
+
+public class VehicleController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	VehicleService vehicleService;
+	String errormsg;
+	String deletemsg;
+
+    public VehicleController() {
+        vehicleService = VehicleService.getVehicleService();
+
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String numberPlate = request.getParameter("numberPlate");
+		if(numberPlate != null) {
+			launchSpecificVehicle(request, response);
+		}else {
+			launchAllVehicles(request, response);
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String type = request.getParameter("type");
+		
+		if(type != null) {
+			if(type.equals("add")) {
+				insertVehicle(request, response);
+			}else if(type.equals("delete")) {
+				deleteVehicle(request, response);
+			}
+		}
+	}
+	
+	private void launchSpecificVehicle(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		clearMessage();
+		
+		String numberPlate = request.getParameter("numberPlate");
+		Vehicle vehicle = new Vehicle();
+		
+		try {
+			vehicle = vehicleService.getVehicle(numberPlate);
+		} catch (ClassNotFoundException | SQLException e) {
+			errormsg = e.getMessage();
+		}
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("errormsg", errormsg);
+		session.setAttribute("vehicle", vehicle);
+		
+		response.sendRedirect("gocheeta-managevehicles.jsp");
+	}
+	
+	private void launchAllVehicles(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Vehicle> vehicleList;
+		
+		clearMessage();
+		
+		try {
+			vehicleList = vehicleService.getVehicles();
+		} catch (ClassNotFoundException | SQLException e) {
+			errormsg = e.getMessage();
+			vehicleList = new ArrayList<Vehicle>();
+		}
+		
+		request.setAttribute("errormsg", errormsg);
+		request.setAttribute("vehicleList", vehicleList);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("gocheeta-vehicles.jsp");
+		rd.forward(request, response);
+	}
+	
+	private void insertVehicle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		clearMessage();
+		
+		String numberPlate = request.getParameter("numberPlate");
+		String categoryID = request.getParameter("categoryID");
+		
+		Vehicle vehicle = new Vehicle(numberPlate, categoryID);
+		
+		try {
+			boolean result = vehicleService.addVehicle(vehicle);
+			
+			if(result) {
+				errormsg = "Vehicle Added Successfully! Vehicle Number Plate " + numberPlate;
+			}else {
+				errormsg = "Failed to add Vehicle";
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			errormsg = e.getMessage();
+		}
+		
+		request.setAttribute("message", errormsg);
+		RequestDispatcher rd = request.getRequestDispatcher("gocheeta-addvehicle.jsp");
+		rd.forward(request, response);
+	}
+
+	private void deleteVehicle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String numberPlate = request.getParameter("numberPlate");
+		clearMessage();
+		
+		try {
+			boolean result = vehicleService.deleteVehicle(numberPlate);
+			
+			if(result) {
+				deletemsg = "Vehicle with Number Plate " + numberPlate + " has been deleted successfully!";
+			}
+			else {
+				deletemsg = "Failed to delete vehicle";
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			deletemsg = e.getMessage();
+		}
+		
+		request.setAttribute("deletemessage", deletemsg);
+		launchAllVehicles(request, response);
+		
+	}
+	
+	private void clearMessage() {
+		errormsg = "";
+	}
+}

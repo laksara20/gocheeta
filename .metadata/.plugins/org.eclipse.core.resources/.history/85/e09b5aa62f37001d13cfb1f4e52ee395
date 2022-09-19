@@ -1,0 +1,5 @@
+package com.laksara.gocheeta.dao;
+
+public class VehicleFactory {
+
+}

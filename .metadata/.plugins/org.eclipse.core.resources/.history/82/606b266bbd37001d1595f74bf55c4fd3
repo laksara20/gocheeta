@@ -1,0 +1,17 @@
+package com.laksara.gocheeta.model;
+
+public class Administrator extends User {
+	private boolean admin;
+
+	public Administrator() {
+		super();
+
+	}
+
+	public Administrator(String userID, String username, String password,boolean admin) {
+		super(userID, username, password);
+		this.admin = admin;
+	}
+	
+	
+}

@@ -1,0 +1,7 @@
+package com.laksara.gocheeta.model;
+
+public class VehicleCategory {
+	private String categoryID;
+	private String categoryName;
+	
+}

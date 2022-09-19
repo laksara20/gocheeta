@@ -1,0 +1,60 @@
+package com.laksara.gocheeta.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+
+import com.laksara.gocheeta.model.VehicleCategory;
+
+public class VehicleCategoryManagerImpl implements VehicleCategoryManager {
+
+	/*
+	 * 1. Import the Package 2. Load the Driver 3. Establish the connection 4.
+	 * Create the statement 5. Execute the query 6. Process the result 7. Close the
+	 * connection and the statement
+	 */
+
+	private Connection getConnection() throws ClassNotFoundException, SQLException {
+		MySQLDBConnectorImpl mysql = new MySQLDBConnectorImpl();
+		return mysql.getConnection();
+
+	}
+
+	public boolean addVehicleCategory(VehicleCategory vehicleCategory) throws ClassNotFoundException, SQLException {
+		Connection connection = getConnection();
+
+		String query = "INSERT INTO vehicle_category(categoryID,categoryName) VALUES(?,?)";
+		PreparedStatement ps = connection.prepareStatement(query);
+		ps.setString(1, vehicleCategory.getCategoryID());
+		ps.setString(2, vehicleCategory.getCategoryName());
+		
+		int result = ps.executeUpdate();
+		connection.close();
+		
+		return result > 0;
+	}
+
+	public VehicleCategory getVehicleCategory(String categoryID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<VehicleCategory> getVehicleCategories() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean updateVehicleCategory(String categoryID) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean deleteVehicleCategory(String categoryID) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

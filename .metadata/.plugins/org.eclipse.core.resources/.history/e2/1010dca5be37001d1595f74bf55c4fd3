@@ -1,0 +1,5 @@
+package com.laksara.gocheeta.model;
+
+public class UserFactory {
+
+}

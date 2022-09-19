@@ -1,0 +1,11 @@
+package com.laksara.gocheeta.model;
+
+public class Driver extends User {
+	private char gender;
+	private int age;
+	private String phoneNumber;
+	private String numberPlate;
+	
+	
+	
+}

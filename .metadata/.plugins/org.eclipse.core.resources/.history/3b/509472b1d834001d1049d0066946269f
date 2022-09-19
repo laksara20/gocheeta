@@ -1,0 +1,55 @@
+package com.laksara.gocheeta.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.laksara.gocheeta.model.VehicleCategory;
+
+public class VehicleCategoryService {
+	
+	private VehicleCategoryService vehicleCategoryServiceObj;
+
+	private VehicleCategoryService() {
+
+	}
+	
+	public synchronized VehicleCategoryService getVehicleCategoryService() {
+		if(vehicleCategoryServiceObj == null)
+			vehicleCategoryServiceObj = new VehicleCategoryService();
+		
+		return vehicleCategoryServiceObj;
+		
+	}
+	
+	//Services provided by VehicleCategoryService Class
+	
+	//Create A Vehicle Category
+	public boolean addVehicleCategory(VehicleCategory vehicleCategory) {
+		return false;
+		
+	}
+	
+	//Read A Vehicle Category
+	public VehicleCategory getVehicleCategory(String categoryID) {
+		return new VehicleCategory();
+	}
+	
+	
+	//Read All Vehicle Categories
+	public List<VehicleCategory> getVehicleCategories(){
+		return new ArrayList<VehicleCategory>();
+		
+	}
+	
+	//Update A Vehicle Category
+	public boolean updateVehicleCategory(String categoryID) {
+		return false;
+	}
+	
+	
+	//Delete A Vehicle Category
+	public boolean deleteVehicleCategory(String categoryID) {
+		return false;
+	}
+	
+}

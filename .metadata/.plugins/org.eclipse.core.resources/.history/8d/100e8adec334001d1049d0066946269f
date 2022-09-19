@@ -1,0 +1,8 @@
+package com.laksara.gocheeta.dao;
+
+public class VehicleCategoryFactory {
+	public VehicleCategoryManager getVehicleCategoryManagerInstance() {
+		return new VehicleCategoryManagerImplementation();
+		
+	}
+}

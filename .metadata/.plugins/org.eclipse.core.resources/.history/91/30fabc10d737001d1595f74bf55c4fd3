@@ -1,0 +1,22 @@
+package com.laksara.gocheeta.model;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+class BookingTest {
+    Booking booking;
+
+	@Test
+	void testCalculateCost() {
+	    Booking booking = new Booking();
+	    booking.setFixedCost(15);
+	    booking.setJourneyCost(25);
+		double expectedValue = 40.0;
+		booking.calculateCost();
+		double actualValue = booking.getTotalCost();
+		assertEquals(expectedValue, actualValue, "This should calculate total cost");
+	}
+
+}

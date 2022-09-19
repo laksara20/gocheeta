@@ -1,0 +1,20 @@
+package com.laksara.gocheeta.service;
+
+public class VehicleCategoryService {
+	
+	private VehicleCategoryService vehicleCategoryServiceObj;
+
+	private VehicleCategoryService() {
+
+	}
+	
+	public synchronized VehicleCategoryService getVehicleCategoryService() {
+		if(vehicleCategoryServiceObj == null)
+			vehicleCategoryServiceObj = new VehicleCategoryService();
+		
+		return vehicleCategoryServiceObj;
+		
+	}
+
+	
+}

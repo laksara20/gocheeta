@@ -1,0 +1,11 @@
+package com.laksara.gocheeta.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.laksara.gocheeta.model.VehicleCategory;
+
+public class VehicleManagerImpl implements VehicleManager{
+
+
+}

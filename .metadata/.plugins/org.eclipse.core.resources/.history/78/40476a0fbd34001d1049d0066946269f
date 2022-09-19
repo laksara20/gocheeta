@@ -1,0 +1,5 @@
+package com.laksara.gocheeta.service;
+
+public class VehicleCategoryService {
+
+}

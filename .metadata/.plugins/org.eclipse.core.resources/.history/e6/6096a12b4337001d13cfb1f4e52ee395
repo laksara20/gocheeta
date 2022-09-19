@@ -1,0 +1,64 @@
+package com.laksara.gocheeta.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+
+import com.laksara.gocheeta.model.Vehicle;
+
+public class VehicleManagerImpl implements VehicleManager{
+	
+	/*
+	 * 1. Import the Package 2. Load the Driver 3. Establish the connection 4.
+	 * Create the statement 5. Execute the query 6. Process the result 7. Close the
+	 * connection and the statement
+	 */
+
+	private Connection getConnection() throws ClassNotFoundException, SQLException {
+		MySQLDBConnectorImpl mysql = new MySQLDBConnectorImpl();
+		return mysql.getConnection();
+
+	}
+
+
+	public boolean addVehicle(Vehicle vehicle) throws ClassNotFoundException, SQLException {
+		Connection connection = getConnection();
+		
+		String query = "INSERT INTO vehicle(numberPlate,categoryID) VALUES(?,?)";
+		PreparedStatement ps = connection.prepareStatement(query);
+		ps.setString(1, vehicle.getNumberPlate());
+		ps.setString(2, vehicle.getCategoryID());
+		
+		int result = ps.executeUpdate();
+		connection.close();
+		
+		return result > 0;
+	}
+
+	@Override
+	public Vehicle getVehicle(String numberPlate) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Vehicle> getVehicles() throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean updateVehicle(Vehicle vehicle) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteVehicle(String numberPlate) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+}
